@@ -19,8 +19,10 @@ public class FormController {
 	
 	
 	@GetMapping("/form")
-	public String form(Model model) {
+	public String form(User user, Model model) {
 		model.addAttribute("title", "Enviar datos formulario");
+		model.addAttribute("user", user);
+
 		return "form";
 	}
 	
@@ -41,7 +43,12 @@ public class FormController {
 		
 		if(result.hasErrors()) {
 			Map<String, String > errores = new HashMap<>();
-			result.getFieldErrors().forEach(()->{})
+			result.getFieldErrors().forEach(error ->{
+				errores.put(error.getField(), "Field: ".concat(error.getField()).concat(" ").concat(error.getDefaultMessage()));
+			});
+			
+			model.addAttribute("error", errores);
+			
 			return "form";
 			
 		}
