@@ -11,13 +11,44 @@
 	<!-- en el form usamo th:object para mapea<r el objeto user que enviamos en los atributos y sus campos quedaran mapeado con el th:field  para los atributos del objeto user-->
 	<form th:action="@{/form}" method="post" th:object="${user}">
 		<div>
+			<label for="accessCode">
+				Access Code
+			</label>
+			<div>
+				<input type="text"  id="accessCode" th:field= "*{accessCode}">
+			</div>
+			<!--<div th:if="${error != null && error.containsKey('username')}" th:text="${error.get('username')}"></div>-->
+			<div th:if="${#fields.hasErrors('accessCode')}" th:errors="*{accessCode}"></div>
+		</div>
+		<div>
+			<label for="name">
+				Name
+			</label>
+			<div>
+				<input type="text"  id="name" th:field= "*{name}">
+			</div>
+			<!--<div th:if="${error != null && error.containsKey('username')}" th:text="${error.get('username')}"></div>-->
+			<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+		</div>
+		<div>
+			<label for="lastname">
+				Lastname
+			</label>
+			<div>
+				<input type="text"  id="lastname" th:field= "*{lastname}">
+			</div>
+			<!--<div th:if="${error != null && error.containsKey('username')}" th:text="${error.get('username')}"></div>-->
+			<div th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></div>
+		</div>
+		<div>
 			<label for="username">
 				Username
 			</label>
 			<div>
 				<input type="text"  id="username" th:field= "*{username}">
 			</div>
-			<div th:if="${error != null && error.containsKey('username')}" th:text="${error.get('username')}"></div>
+			<!--<div th:if="${error != null && error.containsKey('username')}" th:text="${error.get('username')}"></div>-->
+			<div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
 		</div>
 			<div>
 			<label for="password">
@@ -26,16 +57,19 @@
 			<div>
 				<input type="password" th:field= "*{password}" id="password">
 			</div>
-			<div th:if="${error != null && error.containsKey('password')}" th:text="${error.get('password')}"></div>
+			<!--<div th:if="${error != null && error.containsKey('password')}" th:text="${error.get('password')}"></div>-->
+			<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+
 		</div>
 			<div>
 			<label for="email">
 				Email
 			</label>
 			<div>
-				<input type="email" id="email" th:field= "*{email}">
+				<input type="text" id="email" th:field= "*{email}">
 			</div>
-			<div th:if="${error != null && error.containsKey('email')}" th:text="${error.get('email')}"></div>
+			<!--<div th:if="${error != null && error.containsKey('email')}" th:text="${error.get('email')}"></div>-->
+			<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 		</div>
 		<div>
 			
